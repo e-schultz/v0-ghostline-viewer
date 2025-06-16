@@ -1,26 +1,12 @@
 import type React from "react"
 import { memo } from "react"
-import { Gauge, Headphones, Clock } from "lucide-react"
-import { useGhost } from "@/context/ghost-context"
+import { Gauge } from "lucide-react"
 
 /**
  * Ghost Metadata component
  * Displays metadata and information about the ghost trace
  */
 function GhostMetadataComponent() {
-  const { logs } = useGhost()
-
-  // Calculate audio stats
-  const audioLogs = logs.filter((log) => log.type === "audio")
-  const totalAudioDuration = audioLogs.reduce((total, log) => total + (log.audioDuration || 0), 0)
-
-  // Format total duration
-  const formatTotalDuration = (seconds: number) => {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins}m ${secs}s`
-  }
-
   return (
     <section
       aria-labelledby="ghost-metadata-header"
@@ -52,27 +38,6 @@ function GhostMetadataComponent() {
             </>
           }
         />
-
-        {audioLogs.length > 0 && (
-          <MetadataSection
-            title="Audio Logs"
-            content={
-              <>
-                <div className="flex items-center">
-                  <Headphones className="mr-2 flex-shrink-0" size={18} aria-hidden="true" />
-                  <span className="text-sm">
-                    {audioLogs.length} log{audioLogs.length !== 1 ? "s" : ""}
-                  </span>
-                </div>
-                <div className="flex items-center mt-1">
-                  <Clock className="mr-2 flex-shrink-0" size={18} aria-hidden="true" />
-                  <span className="text-sm">{formatTotalDuration(totalAudioDuration)} total</span>
-                </div>
-                <div className="text-xs mt-1 opacity-70">Use /play [ID] to play</div>
-              </>
-            }
-          />
-        )}
 
         <MetadataSection
           title="Linked floatUIDs"
@@ -118,7 +83,6 @@ function GhostMetadataComponent() {
               <ExportButton format="txt" />
               <ExportButton format="md" />
               <ExportButton format="pdf" />
-              {audioLogs.length > 0 && <ExportButton format="mp3" />}
             </div>
           }
         />
@@ -178,3 +142,4 @@ function ExportButton({ format }: { format: string }) {
 
 // Use memo to prevent unnecessary re-renders
 export const GhostMetadata = memo(GhostMetadataComponent)
+

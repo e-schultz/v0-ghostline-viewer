@@ -62,3 +62,4 @@ function TerminalInfoComponent() {
 
 // Use memo to prevent unnecessary re-renders
 export const TerminalInfo = memo(TerminalInfoComponent)
+

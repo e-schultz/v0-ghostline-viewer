@@ -19,18 +19,6 @@ export interface GhostEntry {
 
   /** Whether the entry is expanded in the UI */
   expanded?: boolean
-
-  /** Type of the entry (text, audio) */
-  type?: "text" | "audio"
-
-  /** URL to the audio file if type is audio */
-  audioUrl?: string
-
-  /** Duration of the audio in seconds */
-  audioDuration?: number
-
-  /** Description of the audio content */
-  audioDescription?: string
 }
 
 /**
@@ -60,22 +48,3 @@ export interface TerminalInputProps {
   onWhisper: () => void
 }
 
-/**
- * Props for the AudioPlayer component
- */
-export interface AudioPlayerProps {
-  /** URL of the audio file */
-  src: string
-
-  /** ID of the audio entry */
-  id: string
-
-  /** Whether the player is in compact mode */
-  compact?: boolean
-
-  /** Duration of the audio in seconds */
-  duration?: number
-
-  /** Function to call when the audio starts playing */
-  onPlay?: () => void
-}

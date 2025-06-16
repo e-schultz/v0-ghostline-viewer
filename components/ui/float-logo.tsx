@@ -31,3 +31,4 @@ YOU ARE THE THREAD NOW
 
 // Use memo to prevent unnecessary re-renders
 export const FloatLogo = memo(FloatLogoComponent)
+

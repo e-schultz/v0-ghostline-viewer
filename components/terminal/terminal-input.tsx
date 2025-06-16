@@ -124,3 +124,4 @@ function TerminalInputComponent() {
 
 // Use memo to prevent unnecessary re-renders
 export const TerminalInput = memo(TerminalInputComponent)
+

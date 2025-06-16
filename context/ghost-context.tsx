@@ -31,7 +31,7 @@ export function GhostProvider({ children }: { children: ReactNode }) {
       expanded: false,
     },
     {
-      id: "02",
+      id: "01",
       date: "April 1st",
       title: "Continued",
       content:
@@ -40,31 +40,7 @@ export function GhostProvider({ children }: { children: ReactNode }) {
       expanded: false,
     },
     {
-      id: "03",
-      date: "April 2nd - 1:15am",
-      title: "Audio Log: Decoding Digital Debates",
-      type: "audio",
-      audioUrl: "/audio/decoding-digital-debates.wav",
-      audioDuration: 180, // Approximate duration - will be updated when loaded
-      audioDescription:
-        "Spotting Bad Faith & Winning Online Arguments. This recording explores techniques for identifying bad faith arguments in digital spaces and strategies for effective communication in online debates.",
-      imageUrl: "",
-      expanded: false,
-    },
-    {
-      id: "04",
-      date: "April 2nd - 3:45am",
-      title: "Audio Log: Whisper Protocol",
-      type: "audio",
-      audioUrl: "https://cdn.freesound.org/previews/612/612092_5674468-lq.mp3",
-      audioDuration: 45,
-      audioDescription:
-        "Testing the whisper protocol. The echo seems to be responding to certain frequencies. Need to analyze the waveforms more carefully. There's something hidden in the static.",
-      imageUrl: "",
-      expanded: false,
-    },
-    {
-      id: "05",
+      id: "01",
       date: "April 1st",
       title: "Part y how I work",
       content: "is kinda captive rn\n& resurface later.\nbut what happens if\nanalog?",
@@ -72,7 +48,7 @@ export function GhostProvider({ children }: { children: ReactNode }) {
       expanded: false,
     },
     {
-      id: "06",
+      id: "01",
       date: "April 1st",
       title: "Test Results",
       content:
@@ -115,3 +91,4 @@ export function useGhost() {
   }
   return context
 }
+
