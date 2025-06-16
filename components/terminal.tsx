@@ -84,4 +84,3 @@ function TerminalComponent() {
 
 // Use memo to prevent unnecessary re-renders
 export const Terminal = memo(TerminalComponent)
-

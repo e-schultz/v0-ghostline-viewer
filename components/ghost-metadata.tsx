@@ -131,4 +131,3 @@ function GhostMetadataComponent() {
 
 // Use memo to prevent unnecessary re-renders
 export const GhostMetadata = memo(GhostMetadataComponent)
-

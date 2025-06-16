@@ -31,4 +31,3 @@ function TerminalHeaderComponent() {
 
 // Use memo to prevent unnecessary re-renders
 export const TerminalHeader = memo(TerminalHeaderComponent)
-

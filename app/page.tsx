@@ -7,6 +7,7 @@ import dynamic from "next/dynamic"
 import { useTheme } from "@/context/theme-context"
 import { GhostProvider, useGhost } from "@/context/ghost-context"
 import { TerminalProvider } from "@/context/terminal-context"
+import { AudioProvider } from "@/context/audio-context"
 import { announceToScreenReader } from "@/lib/accessibility"
 import { TerminalHeader } from "@/components/terminal/terminal-header"
 import { TerminalInfo } from "@/components/terminal/terminal-info"
@@ -48,20 +49,22 @@ export default function Home() {
 
   return (
     <GhostProvider>
-      <div className="min-h-screen bg-black text-pink-500 font-mono relative overflow-x-hidden">
-        <SkipLink />
-        <BackgroundGrid />
+      <AudioProvider>
+        <div className="min-h-screen bg-black text-pink-500 font-mono relative overflow-x-hidden">
+          <SkipLink />
+          <BackgroundGrid />
 
-        <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-4 py-4 sm:py-6 relative z-10">
-          {!initialized ? <LoadingScreen /> : <MainContent mainRef={mainRef} playWhisper={playWhisper} />}
+          <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-4 py-4 sm:py-6 relative z-10">
+            {!initialized ? <LoadingScreen /> : <MainContent mainRef={mainRef} playWhisper={playWhisper} />}
+          </div>
+
+          <ViewerManager mainRef={mainRef} />
+
+          <audio ref={audioRef} className="hidden" preload="none">
+            <source src="/whisper.mp3" type="audio/mpeg" />
+          </audio>
         </div>
-
-        <ViewerManager mainRef={mainRef} />
-
-        <audio ref={audioRef} className="hidden" preload="none">
-          <source src="/whisper.mp3" type="audio/mpeg" />
-        </audio>
-      </div>
+      </AudioProvider>
     </GhostProvider>
   )
 }
@@ -139,4 +142,3 @@ function ViewerManager({ mainRef }: { mainRef: React.RefObject<HTMLDivElement> }
     </>
   )
 }
-

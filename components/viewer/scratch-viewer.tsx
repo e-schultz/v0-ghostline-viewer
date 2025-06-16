@@ -173,4 +173,3 @@ my format
 
 // Use memo to prevent unnecessary re-renders
 export default memo(ScratchViewerComponent)
-

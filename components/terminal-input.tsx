@@ -184,4 +184,3 @@ but what happens if analog?`
 
 // Use memo to prevent unnecessary re-renders
 export default memo(TerminalInputComponent)
-

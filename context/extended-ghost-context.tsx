@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
 import type { GhostEntry } from "@/types/ghost"
 
-type GhostContextType = {
+type ExtendedGhostContextType = {
   showMetadata: boolean
   toggleMetadata: () => void
   showScratchViewer: boolean
@@ -14,12 +14,15 @@ type GhostContextType = {
   toggleLogExpand: (index: number) => void
 }
 
-const GhostContext = createContext<GhostContextType | undefined>(undefined)
+// Create a new context
+const ExtendedGhostContext = createContext<ExtendedGhostContextType | undefined>(undefined)
 
-export function GhostProvider({ children }: { children: ReactNode }) {
+export function ExtendedGhostProvider({ children }: { children: ReactNode }) {
   const [showMetadata, setShowMetadata] = useState(false)
   const [showScratchViewer, setShowScratchViewer] = useState(false)
   const [currentScratch, setCurrentScratch] = useState<string | null>(null)
+
+  // Extended logs array with our new podcast
   const [logs, setLogs] = useState<GhostEntry[]>([
     {
       id: "01",
@@ -56,7 +59,7 @@ export function GhostProvider({ children }: { children: ReactNode }) {
       date: "April 2nd - 3:45am",
       title: "Audio Log: Whisper Protocol",
       type: "audio",
-      audioUrl: "https://cdn.freesound.org/previews/612/612092_5674468-lq.mp3",
+      audioUrl: "/audio/whisper-protocol.wav", // Changed to local file
       audioDuration: 45,
       audioDescription:
         "Testing the whisper protocol. The echo seems to be responding to certain frequencies. Need to analyze the waveforms more carefully. There's something hidden in the static.",
@@ -80,6 +83,19 @@ export function GhostProvider({ children }: { children: ReactNode }) {
       imageUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_3983-5zpgSfVuqswGjqS8atVRpZy8DkTEsw.jpeg",
       expanded: false,
     },
+    // Add our new podcast entry
+    {
+      id: "07",
+      date: "April 9th - 9:22pm",
+      title: "Audio Log: FLOAT_ Building a Haunted BBS for Your Mind",
+      type: "audio",
+      audioUrl: "/audio/float-building-haunted-bbs.wav",
+      audioDuration: 416, // 6:56 in seconds
+      audioDescription:
+        "Deep dive into FLOAT as a state machine for selfhood and living architecture. Explores concepts like ritual AST, event sourcing, Redux for prompts, and the BBS metaphor as a framework for digital consciousness.",
+      imageUrl: "",
+      expanded: false,
+    },
   ])
 
   const toggleMetadata = useCallback(() => {
@@ -91,7 +107,7 @@ export function GhostProvider({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <GhostContext.Provider
+    <ExtendedGhostContext.Provider
       value={{
         showMetadata,
         toggleMetadata,
@@ -104,14 +120,14 @@ export function GhostProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </GhostContext.Provider>
+    </ExtendedGhostContext.Provider>
   )
 }
 
-export function useGhost() {
-  const context = useContext(GhostContext)
+export function useExtendedGhost() {
+  const context = useContext(ExtendedGhostContext)
   if (context === undefined) {
-    throw new Error("useGhost must be used within a GhostProvider")
+    throw new Error("useExtendedGhost must be used within an ExtendedGhostProvider")
   }
   return context
 }

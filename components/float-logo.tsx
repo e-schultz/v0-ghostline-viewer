@@ -27,4 +27,3 @@ function FloatLogoComponent() {
 
 // Use memo to prevent unnecessary re-renders
 export const FloatLogo = memo(FloatLogoComponent)
-

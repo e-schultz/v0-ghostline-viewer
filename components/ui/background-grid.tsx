@@ -19,4 +19,3 @@ function BackgroundGridComponent() {
 
 // Use memo to prevent unnecessary re-renders
 export const BackgroundGrid = memo(BackgroundGridComponent)
-

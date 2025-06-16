@@ -184,4 +184,3 @@ function EchoReaderComponent({ onViewOriginal }: EchoReaderProps) {
 
 // Use memo to prevent unnecessary re-renders
 export const EchoReader = memo(EchoReaderComponent)
-
